@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Dynamic Head Block: overridden per page -->
     {{block "head" .}}
-        <title>{{.Title}}</title>
+        <title>{{.Title}} | Go Enterprise</title>
     {{end}}
     <style>
-        /* Modern CSS Reset & Layout Styles */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: system-ui, -apple-system, sans-serif; background: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
         
@@ -24,7 +23,6 @@
         .secondary-nav a:hover { color: #0f172a; }
         
         .layout-container { display: flex; flex: 1; max-width: 1280px; width: 100%; margin: 0 auto; padding: 2rem; gap: 2rem; }
-        
         main { flex: 3; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         
         aside { flex: 1; background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); height: fit-content; }
@@ -33,7 +31,20 @@
         aside li { margin-bottom: 0.5rem; font-size: 0.9rem; }
         
         footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.875rem; }
+
+        /* Card and Button Styles */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .ui-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; display: flex; flex-direction: column; }
+        .card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .ui-card h4 { font-size: 1.1rem; color: #0f172a; margin-bottom: 0.5rem; }
+        .ui-card p { color: #475569; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.25rem; flex: 1; }
         
+        .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500; text-decoration: none; text-align: center; }
+        .btn-primary { background: #2563eb; color: #fff; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-accent { background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; }
+        .btn-accent:hover { background: #e2e8f0; }
+
         @media (max-width: 768px) {
             .layout-container { flex-direction: column; padding: 1rem; }
         }
@@ -41,19 +52,17 @@
 </head>
 <body>
 
-    <!-- 1. Header Section -->
     <header>
-        <h1>GoEnterprise Portal</h1>
+        <h1>Go Enterprise Portal</h1>
     </header>
 
-    <!-- 2. Primary Navigation -->
     <nav>
         <a href="/">Home</a>
-        <a href="/dashboard">Dashboard</a>
-        <a href="/docs">Documentation</a>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact</a>
     </nav>
 
-    <!-- 3. Secondary Navigation (Conditional) -->
+    <!-- Conditional Secondary Navigation -->
     {{if .SecondaryNav}}
     <div class="secondary-nav">
         {{range .SecondaryNav}}
@@ -62,34 +71,27 @@
     </div>
     {{end}}
 
-    <!-- Main Content & Sidebar Wrapper -->
     <div class="layout-container">
-        
-        <!-- 4. Main Content Section -->
         <main>
             {{block "main" .}}
-                <h2>Default Main Content</h2>
-                <p>Content will be injected here.</p>
+                <p>Default main content</p>
             {{end}}
         </main>
 
-        <!-- 5. Aside Section -->
         <aside>
             {{block "aside" .}}
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#" style="color: #2563eb; text-decoration: none;">Getting Started Guide</a></li>
-                    <li><a href="#" style="color: #2563eb; text-decoration: none;">API Reference</a></li>
-                    <li><a href="#" style="color: #2563eb; text-decoration: none;">Release Notes</a></li>
+                    <li><a href="/" style="color: #2563eb; text-decoration: none;">Home Overview</a></li>
+                    <li><a href="/about" style="color: #2563eb; text-decoration: none;">Our Team</a></li>
+                    <li><a href="/contact" style="color: #2563eb; text-decoration: none;">Support Desk</a></li>
                 </ul>
             {{end}}
         </aside>
-
     </div>
 
-    <!-- 6. Footer Section -->
     <footer>
-        <p>&copy; 2026 Go Web Application. Powered by Go standard library templates.</p>
+        <p>&copy; 2026 Go Enterprise. Built with standard library templates.</p>
     </footer>
 
 </body>

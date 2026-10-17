@@ -1,24 +1,16 @@
 {{define "head"}}
-    <title>{{.Title}} | Go Web Framework</title>
-    <meta name="description" content="{{.Description}}">
-    <!-- Page-specific custom CSS overrides or meta tags can go here -->
+    <title>Home | Go Enterprise Portal</title>
+    <meta name="description" content="Welcome to the high-performance Go web application template.">
 {{end}}
 
 {{define "main"}}
-    <h2 style="color: #0f172a; margin-bottom: 1rem;">{{.Heading}}</h2>
-    <p style="line-height: 1.6; color: #475569; margin-bottom: 1.5rem;">{{.Content}}</p>
-    
-    <h3 style="margin-bottom: 0.75rem; font-size: 1.2rem;">Architectural Highlights:</h3>
-    <ul style="padding-left: 20px; line-height: 1.6; color: #334155;">
-        {{range .Items}}
-        <li style="margin-bottom: 0.5rem;">{{.}}</li>
-        {{end}}
-    </ul>
-{{end}}
-
-{{define "aside"}}
-    <h3>Page Context</h3>
-    <p style="font-size: 0.9rem; color: #64748b; line-height: 1.5;">
-        This sidebar content was injected dynamically from the <code>index.html</code> child template while maintaining the core layout structure.
+    <h2 style="margin-bottom: 0.5rem;">{{.Heading}}</h2>
+    <p style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem;">
+        Explore our architectural pillars powered by Go standard library templates, reusable components, and dynamic layouts.
     </p>
+
+    <div class="card-grid">
+        {{template "card" .FeatureOne}}
+        {{template "card" .FeatureTwo}}
+    </div>
 {{end}}

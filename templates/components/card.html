@@ -1,0 +1,12 @@
+{{define "card"}}
+<div class="ui-card">
+    {{if .Icon}}
+    <div class="card-icon">{{.Icon}}</div>
+    {{end}}
+    <h4>{{.Title}}</h4>
+    <p>{{.Description}}</p>
+    {{if .ButtonURL}}
+        {{template "button" dict "URL" .ButtonURL "Text" .ButtonText "Class" "btn-accent"}}
+    {{end}}
+</div>
+{{end}}
