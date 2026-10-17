@@ -6,10 +6,36 @@
 {{define "main"}}
     <h2 style="margin-bottom: 0.5rem;">Get in Touch</h2>
     <p style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem;">
-        Have questions about implementing Go web templates? Reach out to our engineering support desk.
+        Have questions about implementing Go web templates? Reach out using the form below.
     </p>
-    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 6px; border: 1px solid #e2e8f0;">
-        <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> support@enterprise.go</p>
-        <p><strong>Office:</strong> Silicon Valley, CA</p>
-    </div>
+
+    <!-- Success Banner -->
+    {{if .Success}}
+        <div style="background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; border: 1px solid #a7f3d0;">
+            <strong>Success!</strong> Your message has been sent successfully.
+        </div>
+    {{end}}
+
+    <!-- Error Banner -->
+    {{if .Error}}
+        <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; border: 1px solid #fecaca;">
+            <strong>Error:</strong> {{.Error}}
+        </div>
+    {{end}}
+
+    <form action="/contact" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div>
+            <label style="display: block; font-weight: 500; margin-bottom: 0.4rem; color: #1e293b;">Your Name:</label>
+            <input type="text" name="name" value="{{if .Form}}{{.Form.Name}}{{end}}" style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;">
+        </div>
+        <div>
+            <label style="display: block; font-weight: 500; margin-bottom: 0.4rem; color: #1e293b;">Email Address:</label>
+            <input type="email" name="email" value="{{if .Form}}{{.Form.Email}}{{end}}" style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;">
+        </div>
+        <div>
+            <label style="display: block; font-weight: 500; margin-bottom: 0.4rem; color: #1e293b;">Message:</label>
+            <textarea name="message" rows="4" style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;">{{if .Form}}{{.Form.Message}}{{end}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self: flex-start; cursor: pointer; border: none;">Send Message</button>
+    </form>
 {{end}}
